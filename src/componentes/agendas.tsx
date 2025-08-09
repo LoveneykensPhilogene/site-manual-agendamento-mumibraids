@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Api from "../axios/api";
-import { format } from 'date-fns';
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 export interface Usuario {
     id: number;
@@ -47,8 +46,7 @@ export const Agendas = () => {
 
      }
      useEffect(
-       ()=>{ BuscarTodosUsuarios()},
-       []
+       ()=>{ BuscarTodosUsuarios()}       
      )     
      
      return (
