@@ -37,7 +37,7 @@ export const CriarAgendamento = () => {
             .catch((e) => console.log("Erro ao cadastrar usuário:", e));
     }
 
-        console.log("Usuário cadastrado:", usuario);
+        //console.log("Usuário cadastrado:", usuario);
 
     }
 
@@ -52,8 +52,8 @@ export const CriarAgendamento = () => {
                 <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder='Nome' style={{ margin: 10 }} />
                 <input type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder='CPF' style={{ margin: 10 }} />
                 <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder='Telefone' style={{ margin: 10 }} />
-                <input type="text" value={diaAgendado} onChange={(e) => setDiaAgendado(e.target.value.toString())} placeholder='Dia Agendado' style={{ margin: 10 }} />
-                <input type="text" value={HoraAgendada} onChange={(e) => setHoraAgendada(e.target.value.toString())} placeholder='Hora Agendada' style={{ margin: 10 }} />
+                <input type="text" value={diaAgendado} onChange={(e) => setDiaAgendado(e.target.value)} placeholder='Dia Agendado' style={{ margin: 10 }} />
+                <input type="text" value={HoraAgendada} onChange={(e) => setHoraAgendada(e.target.value)} placeholder='Hora Agendada' style={{ margin: 10 }} />
                 <input type="text" value={format(new Date(), "dd/MM/yyy").toString()} onChange={() => { }} placeholder='Data' style={{ margin: 10 }} />
                 <button type="submit" style={{ margin: 10, backgroundColor: "#8a2be2", fontSize: 16, fontWeight: "bold" }}>Cadastrar</button>
                 <button type="reset" style={{ margin: 10 }}>Limpar</button>
