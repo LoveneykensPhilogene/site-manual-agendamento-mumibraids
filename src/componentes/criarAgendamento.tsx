@@ -26,7 +26,10 @@ export const CriarAgendamento = () => {
         if(usuario.nome==="" || usuario.cpf==="" || usuario.telefone==="" || usuario.dia_agendado==="" || usuario.hora_agendada===""){
             alert("Por favor, preencha todos os campos do formulário antes de cadastrar o agendamento.");
         }else{                 
-        await Api.post("", usuario).then(
+        await Api.post("", usuario,
+            { 
+                params:{cadastrarLinha:"cadastrar"}
+            }).then(
             (response) => {
              if(response.status===200){
               history("/agendas");    
