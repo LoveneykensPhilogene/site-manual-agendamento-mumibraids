@@ -1,24 +1,28 @@
+
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar"
 import { useNavigate, Link } from "react-router-dom"
+import "../styles/pageHome.css"
+
 
 export const Home = () => {
     const nav = useNavigate();
     return (      
-        <div style={{backgroundColor:'white'}}>  
-            <Sidebar style={{ display: "flex",margin:10, flexDirection:'column',borderRadius:'0px 10px 10px 0px', backgroundColor: "#8a2be2",height:850}}
-
-            >
-                <div style={{display:"flex",justifyContent:"space-around",alignItems:"center",flexDirection:'row'}}>
-                    <img src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="User Icon" style={{ width: 20, height: 20 }} />
+        <div className='container container-min'>  
+            <Sidebar className="sideBar" >
+                <div className="divImage divImage-min">
+                    <img  className="image image-min" src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="User Icon" />
                     <h1>Olá, seja bem vindo!</h1>
                 </div>
-                <Menu  style={{flex:1}}>
+                <Menu >
                     <MenuItem
+                    className="menuItem menuItem-min"
                         onClick={() => { nav("/agendas") }}
                     >
                         Agendas
                     </MenuItem>
-                    <MenuItem component={<Link to="/novoAgendamento" />}
+                    <MenuItem
+                        className="menuItem menuItem-min"
+                    component={<Link to="/novoAgendamento" />}
                     //onClick={()=>{nav("/novoAgendamento")}} 
                     >
                         Criar agendamento
