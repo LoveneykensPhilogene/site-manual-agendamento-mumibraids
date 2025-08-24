@@ -2,6 +2,7 @@
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar"
 import { useNavigate, Link } from "react-router-dom"
 import "../styles/pageHome.css"
+import "../styles/responsive-site.css"
 
 
 export const Home = () => {

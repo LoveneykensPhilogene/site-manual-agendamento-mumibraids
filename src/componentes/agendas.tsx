@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Api from "../axios/api";
 import { useNavigate } from "react-router-dom";
 import "../styles/agendas.css"
+import "../styles/responsive-site.css"
 
 export interface Usuario {
     id: number;
@@ -51,7 +52,7 @@ export const Agendas = () => {
     )
 
     return (
-        <div className="containerHome containerHome-min">
+        <div className="containerAgendas containerAgendas-min" >
             <h1>Lista de agendamentos MUMI BRAIDS</h1>
 
             <div className="divList divList-min">
