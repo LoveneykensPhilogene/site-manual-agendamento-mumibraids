@@ -1,19 +1,37 @@
-.containerAgendamento{
-    display: flex;  
-    flex-direction: column;   
+.containerAgendamento {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
-.divForm{
-    display: flex;   
-    flex-direction: column;   
+
+.divForm {
+    display: flex;
 }
-input{  
-    margin: 10px;  
+
+.divButton {
+    display: flex;
+}
+
+input {
+    margin: 10px;
     border-radius: 5px;
     border: 1px solid #8a2be2;
-    padding:5px;
-    font-size: 16px; 
+    padding: 5px;
+    font-size: 16px;
+    width: 300px;
     color: #8a2be2;
 }
-input::placeholder{
-    color: black;   
+
+input::placeholder {
+    color: black;
+}
+
+.modal {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;  
 }

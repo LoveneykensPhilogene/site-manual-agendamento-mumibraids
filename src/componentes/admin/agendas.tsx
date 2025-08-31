@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Api from "../axios/api";
+import Api from "../../axios/api";
 import { useNavigate } from "react-router-dom";
-import "../styles/agendas.css"
-import "../styles/responsive-site.css"
+import "./../../styles/agendas.css"
+import "./../../styles/responsive-site.css"
 
 export interface Usuario {
     id: number;
@@ -66,26 +66,36 @@ export const Agendas = () => {
                 </div>
 
                 {usuarios.map((usuario) => (
+                    <div className="divLinhasContainer-min">
 
-                    <div className="divLinhas divLinhas-min"
-                        style={
-                            {
-                                backgroundColor: selecionarAG
-                                    &&
-                                    usuario.nome === nomeSelect ? "#8a2be2" : "",
+                        <div className="divLinhas divLinhas-min"
+                            style={
+                                {
+                                    backgroundColor: selecionarAG
+                                        &&
+                                        usuario.nome === nomeSelect ? "#8a2be2" : "",
+                                }
                             }
-                        }
-                    >
+                        >
 
-                        <button style={{ marginInlineEnd: 10 }} onClick={() => SelecionarAgendamento(usuario)}>
-                            <img src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="User Icon" style={{ width: 20, height: 20 }} />
-                        </button>
-                        <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.nome}</h2>
-                        <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.cpf}</h2>
-                        <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.telefone}</h2>
-                        <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.dia_agendado}</h2>
-                        <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.hora_agendada}</h2>
-                        <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.data}</h2>
+                            <button style={{ marginInlineEnd: 10 }} onClick={() => SelecionarAgendamento(usuario)}>
+                                <img src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="User Icon" style={{ width: 20, height: 20, cursor: 'pointer' }} />
+                            </button>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.nome}</h2>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.cpf}</h2>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.telefone}</h2>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.dia_agendado}</h2>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.hora_agendada}</h2>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.data}</h2>
+                        </div>
+                        <div className="divButtonEditar" >  {selecionarAG === true && usuario.nome === nomeSelect ? <div>
+                            <button type="button" style={{ backgroundColor: selecionarAG ? "" : "#8a2be2" }}>Editar</button>
+                            <button>Visualizar</button>
+                            <button>Deletar</button>
+                            <button>Enviar lembrete</button>
+
+                        </div> : ""}
+                        </div>
                     </div>
                 ))
                 }

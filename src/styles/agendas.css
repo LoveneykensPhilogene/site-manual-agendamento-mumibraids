@@ -13,7 +13,7 @@
     display: flex;
     flex: 1px;
     flex-direction: "row";
-    margin: 10px;
+    margin:10px;
     justify-content: space-around;
     width: 60%;
     padding-left: 10px;
@@ -24,12 +24,29 @@
     display: flex;
     flex: 1px;
     flex-direction: row;
-    margin: 10px;
+    margin: 20px;
     align-items: center;
     justify-content: space-around;
     width: 60%;
     border-radius: 10px;
     padding-left: 10px;
     border-bottom: 1px solid black
+}
+
+.divButtonEditar{
+    display: flex; 
+    border-inline-start:1px solid black ; 
+   
+}
+.divButtonEditar button{
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    padding:2px;
+    /*background-color: #8a2be2;*/
+    color:black;
+    /*border: none;*/
+    cursor: pointer;
 }
 
