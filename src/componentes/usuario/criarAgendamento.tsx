@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { Usuario } from "../admin/agendas";
 import Api from "../../axios/api";
-import logo from "./../../assets/LOGO Marca mumi braids.jpeg"
+import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
 import "./../../styles/agendamento.css"
 import "./../../styles/responsive-site.css"
 
@@ -12,7 +12,7 @@ export const CriarAgendamento = () => {
     const [cpf, setCpf] = useState("")
     const [telefone, setTelefone] = useState("")
     const [diaAgendado, setDiaAgendado] = useState("")
-    const [HoraAgendada, setHoraAgendada] = useState("") 
+    const [HoraAgendada, setHoraAgendada] = useState("")
     const navigation = useNavigate()
 
     const CadastrarUsuario = async () => {
@@ -22,7 +22,7 @@ export const CriarAgendamento = () => {
             nome: nome,
             cpf: cpf,
             telefone: telefone,
-            dia_agendado: format(new Date(diaAgendado), "dd/MM/yyyy"),
+            dia_agendado: format(new Date(diaAgendado?diaAgendado:""+alert("ok")), "dd/MM/yyyy"),
             hora_agendada: HoraAgendada,
             data: format(new Date(), "dd/MM/yyyy").toString(),
         }
@@ -67,12 +67,10 @@ export const CriarAgendamento = () => {
 
 
     return (
-        <div className="containerAgendamento containerAgendamento-min" >
+        <div className="containerAgendamento containerAgendamento-min" style={{ backgroundColor: "black" }} >
             <img src={logo} alt="logo" style={{ width: 150, height: 100, justifyItems: "stretch" }} />
             {/* <h1 className="">Criar Agendamento MUMI BRAIDS</h1> */}
-            <hr />
-            <h2 className="">Preencha o formulário abaixo para criar um novo agendamento</h2>
-            <hr />
+            <h2 style={{ color: "#FF1493" }}>Preencha o formulário abaixo para criar um novo agendamento</h2>
             <div className="divForm divForm-min">
                 <form action={CadastrarUsuario} style={{ display: "flex", flexDirection: "column", width: "30%", margin: 10 }}>
                     <input className="input-min" type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder='Nome' />
@@ -82,9 +80,11 @@ export const CriarAgendamento = () => {
                     <input className="input-min" type="time" value={HoraAgendada} onChange={(e) => setHoraAgendada(e.target.value)} placeholder='Hora Agendada' />
                     <input className="input-min" type="text" value={format(new Date(), "dd/MM/yyy").toString()} onChange={() => { }} placeholder='Data' />
                     <div className="divButton divButton-min">
-                        <button type="submit" style={{ margin: 10, backgroundColor: "#8a2be2", fontSize: 16, fontWeight: "bold", borderRadius: 5 }}>Cadastrar</button>
-                        <button type="reset" style={{ margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => LimparFormulario}>Limpar</button>
-                        <button type="button" style={{ margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => navigation("/")}>Voltar</button>
+                        <button type="submit" style={{
+                            margin: 10, backgroundColor: "#FF1493", border: "2px solid #FF1493", fontSize: 16, fontWeight: "bold", borderRadius: 5
+                        }}>Cadastrar</button>
+                        <button type="reset" style={{ backgroundColor: "#FF1493", border: "2px solid #FF1493", margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => LimparFormulario}>Limpar</button>
+                        <button type="button" style={{ backgroundColor: "#FF1493", border: "2px solid #FF1493", margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => navigation("/")}>Voltar</button>
                     </div>
                 </form>
             </div>

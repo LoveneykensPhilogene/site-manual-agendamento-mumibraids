@@ -1,13 +1,14 @@
 @media (max-width:1024px) {
     .container-min {
         display: flex;
+        background-color: "black";
     }
 
     .sideBar-min {
         margin: 10px;
         flex-direction: column;
         border-radius: 0px 10px 10px 0px;
-        background-color: #8a2be2;
+        background-color: #FF1493;
         height: 80%
     }
 

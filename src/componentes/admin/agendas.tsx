@@ -36,7 +36,8 @@ export const Agendas = () => {
         console.log("Buscando todos os usuários...");
         await Api.get("", {
             params: {
-                planilha: "usuario"
+                planilha: "AGENDAS",
+                //email:"mumibraids@gmail.com"
             }
         }
         ).then((response) => {
