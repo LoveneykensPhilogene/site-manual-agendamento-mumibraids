@@ -45,7 +45,7 @@ export const AgendamentoUsuario = () => {
         <div style={{ backgroundColor: "black", width: "100vw", height: "1000vh" }}>
             <input type="text" style={{ marginTop: 20 }} onChange={(codigo) => setId(Number.parseInt(codigo.target.value))} placeholder="Digite o código do agendamento" />
             <button onClick={BuscarAgendamentoPorid} style={{ backgroundColor: "#FF1493", marginTop: 20, color: "black", border: "2px solid #FF1493", fontSize: 14, fontWeight: "bold", borderRadius: 5, padding: 6 }}>Buscar Agendamento</button>
-            {agendamento.id == id ?
+            {agendamento.id === id ?
                 <div style={{ margin: 30 }}>
                     <h1 style={{ color: "#FF1493" }}>Seu agendamento</h1>
                     <h3 style={{ color: "#FF1493" }}>Etabelessimento : Mumi Braids</h3>
