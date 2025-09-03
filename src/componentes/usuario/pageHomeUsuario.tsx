@@ -11,7 +11,7 @@ export const PageHomeUsuario = () => {
 
     const Entrar = () => {
         alert("Você tem acesso para login?",)
-        navigation("/login/admin")
+        navigation("/admin/login")
     }
     const botoes: Botao[] = [
         { nome: "Agendar", action: () => { navigation("/novoAgendamento") } },

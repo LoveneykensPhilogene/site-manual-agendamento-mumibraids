@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import { Usuario } from "../admin/agendas";
 import Api from "../../axios/api";
 import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
 import "./../../styles/agendamento.css"
 import "./../../styles/responsive-site.css"
+import { createContextAdmin } from "../context/contextAdmin";
 
 export const CriarAgendamento = () => {
     const [nome, setNome] = useState("")
@@ -14,31 +14,44 @@ export const CriarAgendamento = () => {
     const [diaAgendado, setDiaAgendado] = useState("")
     const [HoraAgendada, setHoraAgendada] = useState("")
     const navigation = useNavigate()
-
+    const { id, email } = useContext(createContextAdmin);
     const CadastrarUsuario = async () => {
-        //  e.preventDefault();
-        const usuario: Usuario = {
+        //  e.preventDefault();     
+
+        const usuario = {
             id: Number.parseInt(cpf.concat(telefone)),
             nome: nome,
             cpf: cpf,
             telefone: telefone,
-            dia_agendado: format(new Date(diaAgendado?diaAgendado:""+alert("ok")), "dd/MM/yyyy"),
+            dia_agendado: format(new Date(diaAgendado ? diaAgendado : "" + alert("dia não pode ser nulo")), "dd/MM/yyyy"),
             hora_agendada: HoraAgendada,
             data: format(new Date(), "dd/MM/yyyy").toString(),
         }
+
         if (usuario.nome === "" || usuario.cpf === "" || usuario.telefone === "" || usuario.dia_agendado === "" || usuario.hora_agendada === "") {
             alert("Por favor, preencha todos os campos do formulário antes de cadastrar o agendamento.");
         } else {
+            if ((email == null || email === "")) {
+                alert("No momento você não tem permissão para criar agendamentos, entre em contato com a Mumi Braids pelo telefone : (47) 9 92523928.");
+                navigation("/")
+            }
             await Api.post("", usuario,
                 {
                     params: { cadastrarLinha: "cadastrar" }
                 }).then(
                     (response) => {
-                        if (response.status === 200) {
-                            navigation("/agendas");
+                        if (response.status === 200 && id) {
+                            navigation("/admin/" + id + "/agendas");
                         }
-                        console.log("Usuario cadastrado com sucesso:", response.data);
+                        else {
+                            navigation("/");
+                        }
+                        console.log("Usuario cadastrado com sucesso:", response.data)
                     }
+
+
+
+
                 )
                 .catch((e) => console.log("Erro ao cadastrar usuário:", e));
         }
@@ -84,7 +97,7 @@ export const CriarAgendamento = () => {
                             margin: 10, backgroundColor: "#FF1493", border: "2px solid #FF1493", fontSize: 16, fontWeight: "bold", borderRadius: 5
                         }}>Cadastrar</button>
                         <button type="reset" style={{ backgroundColor: "#FF1493", border: "2px solid #FF1493", margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => LimparFormulario}>Limpar</button>
-                        <button type="button" style={{ backgroundColor: "#FF1493", border: "2px solid #FF1493", margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => navigation("/")}>Voltar</button>
+                        <button type="button" style={{ backgroundColor: "#FF1493", border: "2px solid #FF1493", margin: 10, borderRadius: 5, fontSize: 16, fontWeight: "bold" }} onClick={() => { if (email) { navigation("/admin/" + id + "/home") } else { navigation("/") } }}>Voltar</button>
                     </div>
                 </form>
             </div>

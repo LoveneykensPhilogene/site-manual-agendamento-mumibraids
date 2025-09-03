@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Api from "../../axios/api";
 import { useNavigate } from "react-router-dom";
 import "./../../styles/agendas.css"
 import "./../../styles/responsive-site.css"
+import { createContextAdmin } from "../context/contextAdmin";
 
 export interface Usuario {
     id: number;
@@ -19,8 +20,10 @@ export const Agendas = () => {
     const [usuarios, setUsuarios] = useState<Usuario[]>([{} as Usuario]);
     const [selecionarAG, setSelecionarAG] = useState(false);
     const [nomeSelect, setNomeSelect] = useState("");
+    const {email}=useContext(createContextAdmin);
     //const formattedDate = format(new Dat), 'dd,MM, yyyy ');
     const navigation = useNavigate()
+    const { id } = useContext(createContextAdmin);
 
     const SelecionarAgendamento = (usuario: Usuario) => {
         if (usuario) {
@@ -37,23 +40,27 @@ export const Agendas = () => {
         await Api.get("", {
             params: {
                 planilha: "AGENDAS",
-                //email:"mumibraids@gmail.com"
+                email:email
             }
         }
         ).then((response) => {
             setUsuarios(response.data)
             console.log("Usuários encontrados:", usuarios);
+          //  navigation("admin/agendas/"+id)
         }
         ).catch((e) => console.log(e));
         // console.log("Usuários encontrados:", format(usuarios[3].dia_agendado, "dd/MM/yyyy") ); 
 
     }
     useEffect(
-        () => { BuscarTodosUsuarios() }
+        () => { BuscarTodosUsuarios() 
+            console.log(email)
+        }
+      
     )
 
     return (
-        <div className="containerAgendas containerAgendas-min" >
+        <div className="containerAgendas containerAgendas-min"  >
             <h1>Lista de agendamentos MUMI BRAIDS</h1>
 
             <div className="divList divList-min">
@@ -103,7 +110,7 @@ export const Agendas = () => {
             </div>
             <div style={{ display: "flex", flex: 1, margin: 20 }}>
                 {/* <button style={{ margin: 5, width: 150, backgroundColor: "#8a2be2", fontSize:24,fontWeight:'bold' }} onClick={BuscarTodosUsuarios}>  Visuaisar</button>                  */}
-                <button style={{ margin: 5, width: 150, backgroundColor: "#8a2be2", fontSize: 18, fontWeight: 'bold' }} onClick={() => navigation("/")}>Voltar</button>
+                <button style={{ margin: 5, width: 150, backgroundColor: "#8a2be2", fontSize: 18, fontWeight: 'bold' }} onClick={() => navigation("/admin/"+id+"/home")}>Voltar</button>
             </div>
         </div>
 

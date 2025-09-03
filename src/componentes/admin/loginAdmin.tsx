@@ -1,22 +1,25 @@
 import { useNavigate } from "react-router-dom"
 import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
 import { BackgroundColor } from "../../styles/colors/backgroundColor"
-import {useState } from "react"
+import { useContext, useState } from "react"
 import Api from "../../axios/api"
+import { createContextAdmin } from "../context/contextAdmin"
 export const LoginAdmin = () => {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const navigation = useNavigate()
+    const { setAdmin, id } = useContext(createContextAdmin);
     const FazerLogin = async () => {
         const login = await Api.post("", { email: email, senha: senha }, {
             params: { login: "admin" }
         });
         console.log(login.data);
-        if (login.data.erro) {        
-           alert("Não tem acesso, entar em contato com administador")
+        if (login.data.erro) {
+            alert("Não tem acesso, entar em contato com administador")
             navigation("/")
-        }else{
-            navigation("/admin/agendas")
+        } else {
+            setAdmin(login.data)
+            navigation("/admin/"+id+"/home")
         }
     }
     return (
