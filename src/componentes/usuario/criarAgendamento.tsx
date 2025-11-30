@@ -23,7 +23,7 @@ export const CriarAgendamento = () => {
             nome: nome,
             cpf: cpf,
             telefone: telefone,
-            dia_agendado: format(new Date(diaAgendado ? diaAgendado : "" + alert("dia não pode ser nulo")), "dd/MM/yyyy"),
+            dia_agendado: format(new Date(diaAgendado ? diaAgendado : "" + alert("dia não pode ser nulo")), "dd/MM/yyyy"+navigation("/")),
             hora_agendada: HoraAgendada,
             data: format(new Date(), "dd/MM/yyyy").toString(),
         }
@@ -35,6 +35,7 @@ export const CriarAgendamento = () => {
                 alert("No momento você não tem permissão para criar agendamentos, entre em contato com a Mumi Braids pelo telefone : (47) 9 92523928.");
                 navigation("/")
             }
+            else {
             await Api.post("", usuario,
                 {
                     params: { cadastrarLinha: "cadastrar" }
@@ -53,7 +54,8 @@ export const CriarAgendamento = () => {
 
 
                 )
-                .catch((e) => console.log("Erro ao cadastrar usuário:", e));
+                .catch((e) => console.log("Erro ao cadastrar usuário:", e));            
+            }
         }
 
         //console.log("Usuário cadastrado:", usuario);
