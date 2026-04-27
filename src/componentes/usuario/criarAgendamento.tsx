@@ -3,8 +3,6 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import Api from "../../axios/api";
 import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
-import "./../../styles/agendamento.css"
-import "./../../styles/responsive-site.css"
 import { createContextAdmin } from "../context/contextAdmin";
 
 export const CriarAgendamento = () => {
