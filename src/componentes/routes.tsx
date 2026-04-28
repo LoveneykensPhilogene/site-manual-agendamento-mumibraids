@@ -6,6 +6,8 @@ import { PageHomeAdmin } from './admin/pageHomeAdmin';
 import { LoginAdmin } from "./admin/loginAdmin";
 import { ContextAdmin } from "./context/contextAdmin";
 import { AgendamentoUsuario } from "./usuario/agendamentoUsuario";
+import { CriarCatalogo } from "./catalogo/criarCatalogo";
+import { Catalogo } from "./catalogo/catalogo";
 
 
 export const Rotas = () => {
@@ -18,7 +20,9 @@ export const Rotas = () => {
                     <Route path={"admin/:id/agendas"} element={<Agendas />} />
                     <Route path="/" element={<PageHomeUsuario />} />
                     <Route path="usuario/agendamento" element={<AgendamentoUsuario />} />
-                    <Route path="/novoAgendamento" element={<CriarAgendamento />} />                 
+                    <Route path="/novoAgendamento" element={<CriarAgendamento />} />
+                    <Route path="/catalogo/cadastro" element={<CriarCatalogo />} />
+                    <Route path="/catalogos/consulta" element={<Catalogo />} />
                 </Routes>
             </ContextAdmin>
         </BrowserRouter>

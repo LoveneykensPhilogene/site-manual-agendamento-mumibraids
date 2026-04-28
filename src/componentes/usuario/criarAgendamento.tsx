@@ -11,6 +11,7 @@ export const CriarAgendamento = () => {
     const [telefone, setTelefone] = useState("")
     const [diaAgendado, setDiaAgendado] = useState("")
     const [HoraAgendada, setHoraAgendada] = useState("")
+    const [preco, setPreco] = useState("")
     const navigation = useNavigate()
     const { id, email } = useContext(createContextAdmin);
     const CadastrarUsuario = async () => {
@@ -23,6 +24,7 @@ export const CriarAgendamento = () => {
             telefone: telefone,
             dia_agendado: format(new Date(diaAgendado ? diaAgendado : "" + alert("dia não pode ser nulo")), "dd/MM/yyyy"+navigation("/")),
             hora_agendada: HoraAgendada,
+            preco: preco,
             data: format(new Date(), "dd/MM/yyyy").toString(),
         }
 
@@ -89,6 +91,7 @@ export const CriarAgendamento = () => {
                     <input className="input-min" type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder='Nome' />
                     <input className="input-min" type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder='CPF' />
                     <input className="input-min" type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder='Telefone' aria-placeholder="" />
+                    <input className="input-min" type="text" value={preco} onChange={(e) => setPreco(e.target.value)} placeholder='preco' />
                     <input className="input-min" type="date" value={diaAgendado} onChange={(e) => setDiaAgendado(e.target.value)} placeholder='Dia Agendado' />
                     <input className="input-min" type="time" value={HoraAgendada} onChange={(e) => setHoraAgendada(e.target.value)} placeholder='Hora Agendada' />
                     <input className="input-min" type="text" value={format(new Date(), "dd/MM/yyy").toString()} onChange={() => { }} placeholder='Data' />

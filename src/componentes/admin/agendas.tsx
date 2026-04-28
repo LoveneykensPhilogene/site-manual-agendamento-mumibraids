@@ -12,6 +12,7 @@ export interface Usuario {
     telefone: string;
     dia_agendado: string;
     hora_agendada: string;
+    preco: string;
     data: string
     //status: string;
 }
@@ -70,6 +71,7 @@ export const Agendas = () => {
                     <h2 style={{ flex: 1 }}>Telefone</h2>
                     <h2 style={{ flex: 1 }}>DIA</h2>
                     <h2 style={{ flex: 1 }}>HORA</h2>
+                    <h2 style={{ flex: 1 }}>PREÇO</h2>
                     <h2 style={{ flex: 1 }}>DATA</h2>
                 </div>
 
@@ -94,6 +96,7 @@ export const Agendas = () => {
                             <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.telefone}</h2>
                             <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.dia_agendado}</h2>
                             <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.hora_agendada}</h2>
+                            <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.preco}</h2>
                             <h2 style={{ flex: 1, fontSize: 18 }}>{usuario.data}</h2>
                         </div>
                         <div className="divButtonEditar" >  {selecionarAG === true && usuario.nome === nomeSelect ? <div>
