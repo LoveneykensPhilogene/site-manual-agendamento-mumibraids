@@ -76,7 +76,7 @@ export const Catalogo = () => {
                 {servicos.map((servico) => {
                     return (
                         <div style={{backgroundColor:"lightgrey",width:300,flexDirection: "column", height: 120,paddingInlineStart:5, borderRadius: 5,margin:20}}>
-                            <img src={servico.imagem} alt={servico.nome} />
+                            <img src={""} alt={servico.nome} />
                             <h2 style={{margin:2}}> Nome: {servico.nome}</h2>
                             <p style={{margin:2}}> Descrição: {servico.descricao + " - " + "com material     -"}</p>
                             <p style={{margin:2}}> Preço: {servico.preco}</p>
