@@ -21,7 +21,7 @@ export const CriarCatalogo = () => {
     //         setFoto(URL.createObjectURL(e.target.files[0]));
     //     }
     // };
-    const url = URL.createObjectURL(new Blob([foto[0]], { type: 'image/*' }));   
+    // const url = URL.createObjectURL(new Blob([foto[0]], { type: 'image/*' }));   
 
     // const PegarFile = (e:any) => {
     //     const blob = new Blob([e.target.files[0]], { type: 'image/*' });
@@ -76,7 +76,7 @@ export const CriarCatalogo = () => {
             <img src={logo} alt="logo" style={{ width: 150, height: 100, justifyItems: "stretch" }} />
             <hr style={{ width: 500, border: "1px solid #FF1493" }} />
             <h1>Criar Catalogo</h1>
-            <a href={url} download={"imagem_" + formatDate(new Date(), "dd-MM-yyyy_hh-mm")} >Clique aqui</a>
+            {/* <a href={url} download={"imagem_" + formatDate(new Date(), "dd-MM-yyyy_hh-mm")} >Clique aqui</a> */}
             <img src={foto} alt="logo" style={{ width: 150, height: 150, justifyItems: "stretch", borderRadius: 75, objectFit: 'fill' }} />
             <div style={{ display: "flex", width: 300, flexDirection: "column", gap: 10 }}>
                 <input style={{}} type="file" title="Selecione uma imagem" accept="image/*" alt="foto" onChange={(e)=>setFoto(e.target.value)} />
