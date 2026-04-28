@@ -70,7 +70,7 @@ export const Catalogo = () => {
 
     return (
         <div>
-            <h1>Catalogos</h1>
+            <h1 style={{ textAlign: "center" }}>Catalogo</h1>
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap", width:"100%", height: 300, overflow: "auto" }}>
                 {servicos.map((servico) => {
                     return (

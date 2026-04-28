@@ -77,7 +77,7 @@ export const CriarCatalogo = () => {
             <hr style={{ width: 500, border: "1px solid #FF1493" }} />
             <h1>Criar Catalogo</h1>
             {/* <a href={url} download={"imagem_" + formatDate(new Date(), "dd-MM-yyyy_hh-mm")} >Clique aqui</a> */}
-            <img src={foto} alt="logo" style={{ width: 150, height: 150, justifyItems: "stretch", borderRadius: 75, objectFit: 'fill' }} />
+            {/* <img src={foto} alt="logo" style={{ width: 150, height: 150, justifyItems: "stretch", borderRadius: 75, objectFit: 'fill' }} /> */}
             <div style={{ display: "flex", width: 300, flexDirection: "column", gap: 10 }}>
                 <input style={{}} type="file" title="Selecione uma imagem" accept="image/*" alt="foto" onChange={(e)=>setFoto(e.target.value)} />
                 <input type="text" className="input" placeholder="Digite o nome do produto" onChange={(e) => { setNome(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
