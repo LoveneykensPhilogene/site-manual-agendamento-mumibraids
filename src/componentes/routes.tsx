@@ -22,7 +22,7 @@ export const Rotas = () => {
                     <Route path="usuario/agendamento" element={<AgendamentoUsuario />} />
                     <Route path="/novoAgendamento" element={<CriarAgendamento />} />
                     <Route path="/catalogo/cadastro" element={<CriarCatalogo />} />
-                    <Route path="/catalogos/consulta" element={<Catalogo />} />
+                    <Route path="/catalogo/consulta" element={<Catalogo />} />
                 </Routes>
             </ContextAdmin>
         </BrowserRouter>

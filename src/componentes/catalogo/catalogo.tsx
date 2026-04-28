@@ -75,7 +75,7 @@ export const Catalogo = () => {
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap", width:"100%", height: 300, overflow: "auto" }}>
                 {servicos.map((servico) => {
                     return (
-                        <div style={{backgroundColor:"lightgrey",Width:300,flexDirection: "column", height: 120,paddingInlineStart:5, borderRadius: 5,margin:20}}>
+                        <div style={{backgroundColor:"lightgrey",width:300,flexDirection: "column", height: 120,paddingInlineStart:5, borderRadius: 5,margin:20}}>
                             <img src={servico.imagem} alt={servico.nome} />
                             <h2 style={{margin:2}}> Nome: {servico.nome}</h2>
                             <p style={{margin:2}}> Descrição: {servico.descricao + " - " + "com material     -"}</p>

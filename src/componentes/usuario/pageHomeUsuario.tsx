@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
 import { BackgroundColor } from "../../styles/colors/backgroundColor";
 
@@ -56,6 +56,9 @@ export const PageHomeUsuario = () => {
                         </button>
                     </div>
                 ))}
+
+                <Link style={{ color: "red" }} to="/catalogo/cadastro" >Cadastro</Link>
+                <Link style={{ color: "red" }} to="/catalogo/consulta" >Consulta</Link>
             </div>
 
         </div>
