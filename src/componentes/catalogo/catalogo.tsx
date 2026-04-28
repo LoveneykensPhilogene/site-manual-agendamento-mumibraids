@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import img from "react";
+
 import Api from "../../axios/api";
-import { formatDate } from 'date-fns';
 
 export type SERVICO = {
     id: number | undefined;
@@ -9,7 +8,7 @@ export type SERVICO = {
     preco: string | undefined;
     descricao: string | undefined;
     tipo: string | undefined;
-    foto: Blob | undefined;
+    foto:""|undefined;
     criado: string | undefined;
     atualizacao: string | undefined;
 }
@@ -78,7 +77,7 @@ export const Catalogo = () => {
                         <div style={{backgroundColor:"lightgrey",width:300,flexDirection: "column", height: 120,paddingInlineStart:5, borderRadius: 5,margin:20}}>
                             <img src={""} alt={servico.nome} />
                             <h2 style={{margin:2}}> Nome: {servico.nome}</h2>
-                            <p style={{margin:2}}> Descrição: {servico.descricao + " - " + "com material     -"}</p>
+                            <p style={{margin:2}}> Descrição: {servico.descricao}</p>
                             <p style={{margin:2}}> Preço: {servico.preco}</p>
                             <p style={{margin:2}}> Tipo: {servico.tipo}</p>
                         </div>

@@ -15,15 +15,15 @@ export const CriarCatalogo = () => {
     const [foto, setFoto] = useState('');
     const navigation = useNavigate();
 
-    const handleImageChange = (e: any) => {
-        if (e.target.files && e.target.files[0]) {
-            // Cria uma URL local para a imagem
-            setFoto(URL.createObjectURL(e.target.files[0]));
-        }
-    };
+    // const handleImageChange = (e: any) => {
+    //     if (e.target.files && e.target.files[0]) {
+    //         // Cria uma URL local para a imagem
+    //         setFoto(URL.createObjectURL(e.target.files[0]));
+    //     }
+    // };
     const url = URL.createObjectURL(new Blob([foto[0]], { type: 'image/*' }));   
 
-    const PegarFile = (e) => {
+    const PegarFile = (e:any) => {
         const blob = new Blob([e.target.files[0]], { type: 'image/*' });
         const formData = new FormData();
         formData.append('file', blob);
@@ -38,7 +38,7 @@ export const CriarCatalogo = () => {
             preco: preco,
             descricao: descricao,
             tipo: tipo,
-            foto: foto as unknown as Blob,
+            foto:"",
             criado: formatDate(new Date(), "dd/MM/yyyy"),
             atualizacao: formatDate(new Date(), "dd/MM/yyyy")
         }   //    const link = document.createElement('a')

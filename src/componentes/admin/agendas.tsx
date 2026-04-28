@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Api from "../../axios/api";
 import { useNavigate } from "react-router-dom";
-import "./../../styles/agendas.css"
-import "./../../styles/responsive-site.css"
+// import "./../../styles/agendas.css"
+// import "./../../styles/responsive-site.css"
 import { createContextAdmin } from "../context/contextAdmin";
 
 export interface Usuario {
