@@ -12,7 +12,7 @@ export const CriarCatalogo = () => {
     const [nome, setNome] = useState("nenhum nome selecionado")
     const [preco, setPreco] = useState("nenhum preco selecionado")
     const [descricao, setDescricao] = useState("nenhum descricao selecionado")
-    const [foto, setFoto] = useState('');
+    // const [foto, setFoto] = useState(null);
     const navigation = useNavigate();
 
     // const handleImageChange = (e: any) => {
@@ -30,15 +30,15 @@ export const CriarCatalogo = () => {
     // }
 
     const CriarServico = async () => {
-        
-   
+
+
         const servico: SERVICO = {
             id: 1945,
             nome: nome,
             preco: preco,
             descricao: descricao,
             tipo: tipo,
-            foto:"",
+            foto: "",
             criado: formatDate(new Date(), "dd/MM/yyyy"),
             atualizacao: formatDate(new Date(), "dd/MM/yyyy")
         }   //    const link = document.createElement('a')
@@ -67,7 +67,7 @@ export const CriarCatalogo = () => {
 
             )
             .catch((e) => console.log("Erro ao cadastrar usuário:", e));
-        }        
+    }
 
 
     return (
@@ -79,7 +79,7 @@ export const CriarCatalogo = () => {
             {/* <a href={url} download={"imagem_" + formatDate(new Date(), "dd-MM-yyyy_hh-mm")} >Clique aqui</a> */}
             {/* <img src={foto} alt="logo" style={{ width: 150, height: 150, justifyItems: "stretch", borderRadius: 75, objectFit: 'fill' }} /> */}
             <div style={{ display: "flex", width: 300, flexDirection: "column", gap: 10 }}>
-                <input style={{}} type="file" title="Selecione uma imagem" accept="image/*" alt="foto" onChange={(e)=>setFoto(e.target.value)} />
+                <input style={{}} type="file" title="Selecione uma imagem" accept="image/*" alt="foto" />
                 <input type="text" className="input" placeholder="Digite o nome do produto" onChange={(e) => { setNome(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
                 <input type="text" className="input" placeholder="Digite o valor" onChange={(e) => { setPreco(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
                 <textarea title="" placeholder="Digite a descrição" onChange={(e) => { setDescricao(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 60 }} />
