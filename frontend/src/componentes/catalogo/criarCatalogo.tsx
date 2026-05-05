@@ -53,14 +53,14 @@ export const CriarCatalogo = () => {
         //    link.click()
         //    URL.revokeObjectURL(url)
 
-        const MostrarImagem = (e: any) => {
-            const fotoUpload = new FileReader();
-            fotoUpload.onload = (e: any) => {
-                setFoto(e.target.result);
-            };
-            fotoUpload.readAsDataURL(e.target.files[0]);
+        // const MostrarImagem = (e: any) => {
+        //     const fotoUpload = new FileReader();
+        //     fotoUpload.onload = (e: any) => {
+        //         setFoto(e.target.result);
+        //     };
+        //     fotoUpload.readAsDataURL(e.target.files[0]);
 
-        }       
+        // }       
 
 
 //         const handleUpload = async () => {
