@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import Api from "../../axios/api";
 import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
-import { MenuItem } from 'react-pro-sidebar';
-import { Sidebar } from 'react-pro-sidebar';
 
 export type SERVICO = {
     id: number | undefined;
