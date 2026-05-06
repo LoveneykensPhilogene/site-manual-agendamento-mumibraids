@@ -10,7 +10,7 @@ export type SERVICO = {
     descricao: string | undefined;
     tipo: string | undefined;
     duracao: string | undefined;
-    foto: File | null;
+    foto: string|null
     criado: string | undefined;
     atualizacao: string
 }

@@ -1,5 +1,5 @@
 
-import {useState } from "react"
+import { useState } from "react"
 import logo from "./../../assets/LOGO_Marca_mumi_braids-sem-fundo.png"
 import { formatDate } from "date-fns"
 import Api from "../../axios/api"
@@ -14,8 +14,8 @@ export const CriarCatalogo = () => {
     const [descricao, setDescricao] = useState("nenhum descricao selecionado")
     const [foto, setFoto] = useState<string | null>(null);
     const navigation = useNavigate();
-    // const [file,setFile] =useState(null);
-   
+    //const [file,setFile] =useState(null);
+
 
     const handleImageChange = (e: any) => {
         if (e.target.files && e.target.files[0]) {
@@ -35,6 +35,16 @@ export const CriarCatalogo = () => {
     //     formData.append('file', blob);
     // }
 
+    // const EnviarImagemNogoogleDrive = async (e:any) => {
+    //     await Api.post("", JSON.stringify(e.target.files),
+    //         {
+    //             params: { salvarImagem: "SalvarImagem" }
+    //         })
+    //         .then(res => res.data)
+    //         .then(result => console.log("Arquivo salvo:", result.url))
+    //         .catch(err => console.error(err.message));
+    // }
+
     const CriarServico = async () => {
 
         const servico: SERVICO = {
@@ -44,7 +54,7 @@ export const CriarCatalogo = () => {
             descricao: descricao,
             tipo: tipo,
             duracao: duracao.concat("h"),
-            foto: foto ? new File([foto], "imagem.png", { type: "image/png" }) : null,
+            foto: foto ,// ? new File([foto], "imagem.png", { type: "image/png" }) : null,
             criado: formatDate(new Date(), "dd/MM/yyyy"),
             atualizacao: formatDate(new Date(), "dd/MM/yyyy")
         }   //    const link = document.createElement('a')
@@ -63,25 +73,25 @@ export const CriarCatalogo = () => {
         // }       
 
 
-//         const handleUpload = async () => {
-//             if (!file) return;
-// let data = null;
-//             const reader = new FileReader();
-//             reader.readAsDataURL(file);
-//             reader.onload = () => {
-//                 const base64String = reader.result.split(',')[1];
-//                 data = {
-//                     base64: base64String,
-//                     type: file.type,
-//                     name: file.name
-//                 };
-//             }
+        //         const handleUpload = async () => {
+        //             if (!file) return;
+        // let data = null;
+        //             const reader = new FileReader();
+        //             reader.readAsDataURL(file);
+        //             reader.onload = () => {
+        //                 const base64String = reader.result.split(',')[1];
+        //                 data = {
+        //                     base64: base64String,
+        //                     type: file.type,
+        //                     name: file.name
+        //                 };
+        //             }
 
-//                 await Api.post("", JSON.stringify(data))
-//                 .then(res => res.data)
-//                     .then(result => console.log("Arquivo salvo:", result.url))
-//                     .catch(err => console.error(err));
-//             }
+        //                 await Api.post("", JSON.stringify(data))
+        //                 .then(res => res.data)
+        //                     .then(result => console.log("Arquivo salvo:", result.url))
+        //                     .catch(err => console.error(err));
+        //             }
         // Envia para o Apps Script
         //     fetch(WEB_APP_URL, {
         //         method: 'POST',
@@ -97,7 +107,7 @@ export const CriarCatalogo = () => {
 
 
 
-        
+
         await Api.post("", servico,
             {
                 params: { servicoNoCatalogo: "novoServico" }
@@ -130,7 +140,7 @@ export const CriarCatalogo = () => {
                 <input type="text" className="input" placeholder="Digite o valor" onChange={(e) => { setPreco(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
 
                 <input type="text" className="input" placeholder="Digite a duração" onChange={(e) => { setDuracao(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
-                 
+
                 <textarea title="descricao" placeholder="Digite a descrição" onChange={(e) => { setDescricao(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 60 }} />
 
                 <select name="tipo" defaultValue="selecione" onChange={(e) => { setTipo(e.target.value) }} style={{ cursor: "pointer", border: "2px solid #FF1493", borderRadius: 5, height: 30 }}>
