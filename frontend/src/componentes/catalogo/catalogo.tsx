@@ -10,14 +10,18 @@ export type SERVICO = {
     descricao: string | undefined;
     tipo: string | undefined;
     duracao: string | undefined;
-    foto: string|null
+    foto: string | null
+    fotoId: string | undefined;
     criado: string | undefined;
     atualizacao: string
 }
-
+ 
 export const Catalogo = () => {
 
     const [servicos, setServicos] = useState<SERVICO[]>([{} as SERVICO]);
+    // const [foto, setFoto] = useState<string | null>();
+    // const [fot, setFot] = useState<string | null>(null);
+    //const f = "data:image/*;base64,"
 
 
 
@@ -58,7 +62,7 @@ export const Catalogo = () => {
         }).then(
             (response) => {
                 if (response.status === 200) {
-                    // console.log("Agendamento encontrado:", response.data);
+                    console.log("Agendamento encontrado:", response.data);
                     setServicos(response.data);
                 } else {
                     // console.log("Nenhum agendamento encontrado com o ID fornecido." + JSON.stringify(servicos));
@@ -67,8 +71,29 @@ export const Catalogo = () => {
             }
         ).catch((e) => console.log("Erro ao buscar agendamento:", e));
     }
+    // const BuscarAsFotosPorId = async (idFoto: any) => {
+    //     if (idFoto === null || idFoto === undefined || idFoto === "") return (logo);
+    //     await Api.get("", {
+    //         params:
+    //         {
+    //             planilha: "CATALOGO",
+    //             idFoto: idFoto
+    //         }
+    //     }).then(
+    //         (response) => {
+    //             if (response.status === 200) {
+    //                 console.log("Agendamento encontrado:", response.data);
+    //                 return response.data;
+    //             } else {
+    //                 console.log("Nenhum agendamento encontrado com o ID fornecido." + JSON.stringify(response.data));
+    //                 // alert("Nenhum agendamento encontrado com o código fornecido.");
+    //             }
+    //         }
+    //     ).catch((e) => console.log("Erro ao buscar agendamento:", e));
+    // }
     useEffect(() => {
         MostrarCatalogo()
+        // BuscarAsFotosPorId("1RtvFlO_At4HHCCQJhgmF65sa3imI3T5c");           
     }, [servicos.length]);
 
 
@@ -78,6 +103,7 @@ export const Catalogo = () => {
                 <img src={logo} alt="logo" style={{ width: 150, height: 100, justifyItems: "stretch" }} />
                 <hr style={{ display: "flex", width: "100%", border: "1px solid #FF1493" }} />
             </div>
+
             <h1 style={{ textAlign: "center" }}>Catalogo de servicos</h1>
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap", width: "100%", overflow: "auto" }}>
                 {servicos.map((servico) => {
@@ -85,7 +111,7 @@ export const Catalogo = () => {
                         <div key={servico.id} style={
                             {
                                 justifyContent: "center",
-                                backgroundColor:"lightgrey",
+                                backgroundColor: "lightgrey",
                                 width: 350,
                                 height: 150,
                                 margin: 10,
@@ -109,8 +135,7 @@ export const Catalogo = () => {
                                     }
                                 }
                             >
-                                <img src={logo} alt={servico.nome} style={{ width: 60, height: 60 }} />
-
+                                <img src={`data:image/png;base64,${servico.foto}`} alt={servico.nome} style={{ width: 40, height: 40, justifyItems: "stretch", borderRadius: 40, objectFit: 'fill' }} />
                                 <div
                                     style={
                                         {
@@ -121,7 +146,7 @@ export const Catalogo = () => {
                                             alignItems: "center",
                                         }
                                     }>
-                                    <h2 style={{ margin: 2 }}>{servico.nome}</h2>
+                                    <h2 style={{ margin: 10 }}>{servico.nome}</h2>
                                     <p >R$ {Number.parseFloat(servico.preco).toFixed(2)}</p>
                                 </div>
                             </div>
@@ -134,7 +159,7 @@ export const Catalogo = () => {
                                         {
                                             display: "block",
                                             width: 350,
-                                            height: 65,
+                                            height:servico.descricao ? 50 : 0 ,
                                             wordBreak: "break-word",
                                             overflow: "hidden",
                                             marginTop: -10
@@ -143,7 +168,7 @@ export const Catalogo = () => {
                                         }
                                     }
                                 >
-                                    <p style={{ fontSize: 14, fontFamily:"serif" }}>
+                                    <p style={{ fontSize: 14, fontFamily: "serif" }}>
                                         {servico.descricao}
                                     </p>
                                 </div>
@@ -158,7 +183,7 @@ export const Catalogo = () => {
                                         }}
                                 >
                                     <p style={{ margin: 2 }}>{servico.tipo}</p>
-                                    <p>{"Duracão: 8h"}</p>
+                                    <p>{"Duracão: " + servico.duracao?.split(":")[0] + "h" + servico.duracao?.split(":")[1]}</p>
                                     <p>{servico.atualizacao}</p>
                                 </div>
                             </div>
