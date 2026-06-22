@@ -57,7 +57,7 @@ export const PageHomeUsuario = () => {
                     </div>
                 ))}
 
-                <Link style={{ color: "red" }} to="/catalogo/cadastro" >Cadastro</Link>
+                {/* <Link style={{ color: "red" }} to="/catalogo/cadastro" >Cadastro</Link> */}
                 <Link style={{ color: "red" }} to="/catalogo/consulta" >Consulta</Link>
             </div>
 

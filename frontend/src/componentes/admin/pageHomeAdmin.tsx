@@ -1,8 +1,8 @@
 
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar"
 import { Link, useNavigate } from "react-router-dom"
-import "./../../styles/pageHomeAdmin.css"
-import "./../../styles/responsive-site.css"
+// import "./../../styles/pageHomeAdmin.css"
+// import "./../../styles/responsive-site.css"
 import { useContext } from "react"
 import { ADMIN, createContextAdmin } from "../context/contextAdmin"
 
@@ -30,6 +30,13 @@ export const PageHomeAdmin = () => {
                     //onClick={()=>{nav("/novoAgendamento")}} 
                     >
                         Criar agendamento
+                    </MenuItem>
+                    <MenuItem
+                        className="menuItem menuItem-min"
+                        component={<Link to="/catalogo/cadastro" />}
+                    //onClick={()=>{nav("/novoAgendamento")}} 
+                    >
+                        Criar Catalogo
                     </MenuItem>
                 </Menu>
                 <div style={{ display: "flex", justifyContent: "end", alignItems: "flex-end", height: "900px", margin: 20, flexDirection: "column" }}>
