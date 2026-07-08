@@ -89,14 +89,14 @@ export const CriarCatalogo = () => {
     }
 
     const EnviarImagemNogoogleDrive = async (e: any) => {
-       // const caracteresEspeciais = /'-','_','~','!','@','#','$','%','^','&','*','(',')','+','=','|','\\','{','}'/
-       // let file = null;
+        // const caracteresEspeciais = /'-','_','~','!','@','#','$','%','^','&','*','(',')','+','=','|','\\','{','}'/
+        // let file = null;
         // caracteresEspeciais.test(e.target.files[0].name) 
         // if (caracteresEspeciais.test(e.target.files[0].name)) {
         //     alert("Nome do arquivo não pode conter caracteres especiais ou espaços em branco. Por favor, renomeie o arquivo e tente novamente.");
         //     navigation("/catalogo/cadastro");
         // } else {
-          const  file = e.target.files[0];
+        const file = e.target.files[0];
         //}
         console.log("Arquivo selecionado:", file);
         //setFoto(URL.createObjectURL(file));
@@ -110,7 +110,7 @@ export const CriarCatalogo = () => {
             let stringBinaria = '';
 
             // Processa o buffer em pedaços para evitar estouro de pilha (stack overflow)
-            const tamanhoPedaco = 0x8000; // 32768
+            const tamanhoPedaco = 0; // 32768
             for (let i = 0; i < bytes.length; i += tamanhoPedaco) {
                 stringBinaria += String.fromCharCode.apply(
                     null,
@@ -129,7 +129,7 @@ export const CriarCatalogo = () => {
         const base64Content = btoa(conteudoFile);
         // console.log("Conteúdo do arquivo em Base64:" + "file :" + base64Content +
         //     "\n" + "fotoId: " + fotoId);
-        setFoto(base64Content);
+        //setFoto(base64Content);
         await Api.post("",
             JSON.stringify({
                 arquivo: base64Content,
@@ -146,6 +146,7 @@ export const CriarCatalogo = () => {
         )
             .then(res => {
                 setFotoId(res.data.fileId);
+                setFoto(res.data.fileBase64);
                 console.log("Arquivo salvo:", res.data)
             })
             //.then(result => console.log("Arquivo salvo:", result.url))
@@ -165,7 +166,7 @@ export const CriarCatalogo = () => {
             <div style={{ display: "flex", width: 300, flexDirection: "column", gap: 10 }}>
                 <input type="text" className="input" placeholder="Digite o nome do produto" onChange={(e) => { setNome(e.target.value.toUpperCase()) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
                 <input type="text" className="input" placeholder="Digite o valor" onChange={(e) => { setPreco(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
-                <label htmlFor="duracao">Duração:</label>
+                {/* <label htmlFor="duracao">Duração:</label> */}
                 <input type="time" className="input" placeholder="Digite a duração" onChange={(e) => { setDuracao(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 20 }} />
 
                 <textarea title="descricao" placeholder="Digite a descrição" onChange={(e) => { setDescricao(e.target.value) }} style={{ border: "2px solid #FF1493", borderRadius: 5, height: 60 }} />
@@ -183,7 +184,7 @@ export const CriarCatalogo = () => {
                     </div>
                     :
                     <div>
-                        <input style={{ cursor: "pointer" }} type="file" title="Selecione uma imagem" accept="image/png image/jpeg" alt="foto" onChange={EnviarImagemNogoogleDrive} />
+                        <input style={{ cursor: "pointer" }} type="file" title="Selecione uma imagem" accept="image/png,image/jpeg,image/jpg" alt="foto" onChange={EnviarImagemNogoogleDrive} />
                     </div>
                 }
                 <button onClick={CriarServico} style={{ backgroundColor: "#FF1493", color: "white", border: "none", borderRadius: 5, height: 30, cursor: "pointer" }}>Criar Serviço</button>
